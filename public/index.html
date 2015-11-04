@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>$q all example</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/angular-ui-grid/ui-grid.js"></script>
+
+
+</head>
+<body ng-app="MyApp">
+<div class="container-fluid"  style="margin: 3% 3% 1% 0%" ng-controller="QAllAppCtrl">
+
+
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-8">
+            <div class="gridStyle" ui-grid="gridOptions"></div>
+        </div>
+        <div class="col-xs-6 col-md-4">
+
+            <form name="userForm" role="form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" ng-model="name" class="form-control" id="name" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" ng-model="age" class="form-control" id="age" placeholder="age">
+                </div>
+
+                <fieldset class="scheduler-border" data-ng-repeat="address in addresses">
+                    <legend class="scheduler-border">Address</legend>
+                    <form>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="State">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="City">
+                        </div>
+
+                    </form>
+
+                </fieldset>
+                <button ng-click="submitForm()" class="btn btn-primary">Submit</button>
+                <button ng-click="addNewAddress()" class="btn btn-default">Add Address</button>
+                <button ng-click="clearForm()" class="btn btn-default">clear</button>
+
+            </form>
+        </div>
+        <div class="col-xs-12 col-md-8">
+           <div ng-show="isError">
+               <h3>Errors</h3>
+               <li ng-repeat="error in errors">{{error}}</li>
+
+           </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Rest of teh Scripts -->
+<script src="js/app.js"></script>
+<script src="js/person-service.js"></script>
+
+</body>
+</html>
