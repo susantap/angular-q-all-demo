@@ -69,11 +69,11 @@ router.post('/addaddress',function(req, res,next){
     *  NOTE: This is not the best way to create error objects in the production quality code.
     *  The best way to do it is creating validator utility objects with an ability to construct error strings through localization.
     */
-    if(!validator.isInteger(reqObj.address.city))
+    if(validator.isInteger(reqObj.address.city))
     {
         error.push("City: "+reqObj.address.city+" is not a valid City.Please provide a valid String for City");
     }
-    if(!validator.isInteger(reqObj.address.city))
+    if(validator.isInteger(reqObj.address.city))
     {
         error.push("State: "+reqObj.address.state+" is not a valid state. Please provide a valid String for State");
     }
@@ -83,11 +83,10 @@ router.post('/addaddress',function(req, res,next){
         var per = person.addAddresses(reqObj.formId,reqObj.address);
 
         //return the addresses
-        returnData = constructSuccess();
-        returnData.result = per
+        returnData = constructSuccess(per);
+
     }else{
-        returnData = constructFailure();
-        returnData.error = error;
+        returnData = constructFailure(error);
     }
 
     res.send(returnData)

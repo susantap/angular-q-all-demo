@@ -100,6 +100,10 @@ angular.module('MyApp', ['ui.grid', 'MyApp.personService'])
 
                     $q.all(addressPromises).then(function (resultArray) {
 
+                        console.log("After Executing all the add Address promises -->")
+                        console.log(resultArray);
+                        console.log("End of after Executing all the add Address promises -->")
+
                         //Check if there are any errors
                         for (var i = 0; i < resultArray.length; i++) {
                             var retVal = resultArray[i];
